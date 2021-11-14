@@ -75,9 +75,7 @@ function showAbout() {
         });
         document.getElementById('info').innerHTML = `<h3 id="newAbout">About</h3>
         <span>
-        <p>With just your current bill data and the states you're moving from/to, this tool will estimate
-            your new combined gas and electric bills. If square footage is entered, it will be applied as
-            a simple multiplier.
+        <p>Our team is world renowned and trusted by millions. We're committed to doing everything we can to alleviate your burdens when it comes to the penny pinching insurance industry!
         </p>
         <p>This app doesn't store your data, all calculations are done by your browser!</p>
         </span>
