@@ -3,13 +3,13 @@
 } */
 
 :root {
-    --foreground1: #bce4bc;
-    --foreground2: #84d876;
-    --foreground290: #84d87690;
-    --background1: #160c20;
-    --background2: rgb(29, 4, 31);
-    --background290: rgba(29, 4, 31, .9);
-    --shadow1: rgba(220, 226, 129, 0.5);
+    --foreground1: #447fee;
+    --foreground2: #7261d4;
+    --foreground290: #9493ea90;
+    --background1: #ecf1e7;
+    --background2: #e2ecdd;
+    --background290: #e3ecd890;
+    --shadow1: rgba(202, 221, 149, 0.5);
     --bgTexture: 'url("../img/random-grey-variations.png")';
 }
 

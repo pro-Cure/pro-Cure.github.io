@@ -1,5 +1,6 @@
 var button = document.getElementById("next");
 var formText = document.getElementById("formText");
+var infographic = document.getElementById("info");
 
 var circle1 = document.getElementById("circle1");
 var circle2 = document.getElementById("circle2");
@@ -82,12 +83,15 @@ function nextStep() {
     }
     if(step == 1){
         step = 2;
-        stepInfo.innerHTML = "Preparing Support";
+        stepInfo.innerHTML = "Step 2: Preparing Support";
         formText.innerHTML = `<p>We'll call you as soon as we have an insurance agent on the phone!<br></p>
-        <i>Your estimated wait time is: </i><b>${Math.floor(Math.random() * 5) + 1}</b><i> minutes.</i></p>
+        <i>Your estimated wait time is: </i><b>${Math.floor(Math.random() * 5) + 3}</b><i> minutes.</i></p>
         <br>
-        <button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
+        <button type="button" value="Next" onclick="nextStep()" id="next">Next</button>`;
         formText = document.getElementById("formText");
+        infographic.innerHTML = `<img src="img/tardis.jpg" class="about">
+        <a id="mode" onclick="darkMode()">Toggle Dark Mode</a>`;
+        infographic = document.getElementById("info");
         circle1.classList.remove(uncheckedCircle);
         circle1.classList.add(checkedCircle);
         circle2.classList.remove(incompleteStepCircle);
@@ -96,12 +100,16 @@ function nextStep() {
     }
     if(step == 2){
         step = 3;
-        stepInfo.innerHTML = "Feedback";
-        formText.innerHTML = `<p>Please rate your experience or provide feedback here:<br>
-        <span><a href="">This is a link</a></span></p>
+        stepInfo.innerHTML = "Step 3: Feedback";
+        formText.innerHTML = `<p>Please tell us how your journey with us went:<br>
+        <a href="">This is a link</a></p>
+        <p>Your ticket ID is <a href="">${100000 + Math.floor(Math.random() * 50000)}</a></p>
         <br>
         <button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
         formText = document.getElementById("formText");
+        infographic.innerHTML = `<img src="img/journey.jpg" class="about">
+        <a id="mode" onclick="darkMode()">Toggle Dark Mode</a>`;
+        infographic = document.getElementById("info");
         circle2.classList.remove(uncheckedCircle);
         circle2.classList.add(checkedCircle);
         circle3.classList.remove(incompleteStepCircle);
@@ -113,6 +121,9 @@ function nextStep() {
         formText.innerHTML = step1;
         formText = document.getElementById("formText");
         stepInfo.innerHTML = "Step 1: Origin Details";
+        infographic.innerHTML = `<img src="img/teddydoctor.jpg" class="about">
+        <a id="mode" onclick="darkMode()">Toggle Dark Mode</a>`;
+        infographic = document.getElementById("info");
         circleHTML.innerHTML = circlesDefault;
         circleHTML = document.getElementById("circles");
         return;
