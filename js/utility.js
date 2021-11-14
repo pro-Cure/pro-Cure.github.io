@@ -83,8 +83,8 @@ function nextStep() {
     if(step == 1){
         step = 2;
         stepInfo.innerHTML = "Preparing Support";
-        formText.innerHTML = `<p>We'll call you as soon as we have an insurance agent on the phone!<br>
-        <span>Your estimated wait time is: ${Math.floor(Math.random() * 5) + 1} minutes.</span></p>
+        formText.innerHTML = `<p>We'll call you as soon as we have an insurance agent on the phone!<br></p>
+        <i>Your estimated wait time is: </i><b>${Math.floor(Math.random() * 5) + 1}</b><i> minutes.</i></p>
         <br>
         <button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
         formText = document.getElementById("formText");
@@ -114,6 +114,7 @@ function nextStep() {
         formText = document.getElementById("formText");
         stepInfo.innerHTML = "Step 1: Origin Details";
         circleHTML.innerHTML = circlesDefault;
+        circleHTML = document.getElementById("circles");
         return;
     }
 };
