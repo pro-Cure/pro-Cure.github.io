@@ -109,11 +109,11 @@ var darkshadow = '';
 
 function darkMode() {
     if(modeToggle == false) {
-        root.style.setProperty('--foreground1', '#5E0B73');
-        root.style.setProperty('--foreground2', '#31043D');
-        root.style.setProperty('--foreground290', '#31043D90');
-        root.style.setProperty('--background1', '#DCF0DE');
-        root.style.setProperty('--background2', '#D1F2CC');
+        root.style.setProperty('--foreground1', '#6495ED');
+        root.style.setProperty('--foreground2', '#93CCEA');
+        root.style.setProperty('--foreground290', '#93CCEA90');
+        root.style.setProperty('--background1', '#E6F4E7');
+        root.style.setProperty('--background2', '#EAF6EB');
         root.style.setProperty('--background290', '#D1F2CC90');
         root.style.setProperty('--shadow1', '#B787C280');
         modeToggle = true;
@@ -131,3 +131,5 @@ function darkMode() {
         return;
     }
 }
+
+darkMode()
