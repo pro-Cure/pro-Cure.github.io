@@ -1,0 +1,330 @@
+/* * {
+    border: 1px dotted red;
+} */
+
+:root {
+    --foreground1: #bce4bc;
+    --foreground2: #84d876;
+    --foreground290: #84d87690;
+    --background1: #160c20;
+    --background2: rgb(29, 4, 31);
+    --background290: rgba(29, 4, 31, .9);
+    --shadow1: rgba(220, 226, 129, 0.5);
+    --bgTexture: 'url("../img/random-grey-variations.png")';
+}
+
+.init {
+    transition: color 2s ease;
+    transition: background-color 2s ease;
+    box-sizing: border-box;
+    background-color: var(--background1);
+    background-repeat: repeat;
+    padding: 0;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--foreground1);
+    font-size: 4vw;
+}
+
+nav {
+    display: flex;
+    margin: 0;
+    padding: 1vh 5vw;
+    color: var(--foreground1);
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    font-size: 7vw;
+    border-bottom: 3px solid var(--foreground2);
+    background-color: var(--background2);
+}
+
+/* For about links with no href */
+a {
+    cursor: pointer;
+}
+
+nav #hamburger:hover {
+    color: var(--foreground2);
+}
+
+.fa-bars::before,.fa-bolt::before {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#menu {
+    display: none;
+    position: absolute;
+    justify-self: baseline;
+    width: 16.5vw;
+    font-size: 3vw;
+    margin-top: -3px;
+    background-color: var(--background2);
+    /* background-image: url("../img/random-grey-variations.png"); */
+}
+
+#menu a {
+    display: flex;
+    text-decoration: none;
+    color: var(--foreground1);
+    border: 0.2vh solid var(--foreground1);
+    border-left: none;
+    border-bottom: none;
+    padding: 0.5vh 0 1vh;
+}
+
+#menu a:first-child {
+    border-top: 3px solid var(--foreground2);
+}
+
+#menu a:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom: 0.2vh solid var(--foreground1);
+}
+
+#menu a, #circles {
+    justify-content: center;
+    align-items: center;
+}
+
+#circles {
+    display: none;
+}
+
+#appName {
+    color: var(--foreground2);
+    text-shadow: 3px 1px 4px var(--foreground290);
+    -webkit-text-stroke: 0.1vw var(--foreground2);
+    -webkit-text-fill-color: var(--foreground290);
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.step-tracker {
+    color: var(--foreground1);
+    text-align: center;
+    text-shadow: 1px 1px 3px var(--shadow1);
+}
+
+#step {
+    font-size: 4vw;
+    margin: calc(10px + 1vh) 0 1vh;
+}
+
+#circles {
+    font-size: 5vw;
+    margin: 1vh 0 2vh;
+}
+
+#dash {
+    transform: translateY(calc(-0.2vh + -0.2vw));
+}
+
+#center {
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    margin: 0 10%;
+}
+
+form, #info {
+    border: 2px solid var(--foreground2);
+    padding: 3% 6%;
+    margin: 0;
+    box-shadow: 1px 1px 6px var(--shadow1);
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    border-radius: 1vh 1vh 0 0;
+    background-color: var(--background290);
+    text-shadow: 1px 1px 3px var(--shadow1);
+    align-items: center;
+    text-align: center;
+}
+
+#info {
+    border-top: none;
+    border-radius: 0 0 1vh 1vh;
+    font-size: calc(15px + 0.3vw + 0.3vh);
+    justify-items: center;
+    align-items: center;
+}
+
+#info > img {
+    width: 90%;
+    height: 90%;
+    max-height: 480px;
+    max-width: 600px;
+    border-radius: calc(1px + 1vh);
+    box-shadow: 0px 1px 2px var(--foreground1);
+}
+
+input {
+    width: 70%;
+    height: 10%;
+    font-weight: 600;
+    font-size: calc(10px + 0.5vh + 0.5vw);
+    margin: 2% 0 5% 0;
+    border: 2px var(--foreground2);
+    border-radius: 8px/6px;
+    box-shadow: inset -1px 1px 4px var(--foreground2);
+}
+
+input:focus {
+    box-shadow: inset 0 -2px 4px var(--foreground2);
+}
+
+::placeholder {
+    font-style: italic;
+}
+
+form > span {
+    font-size: calc(10px + 0.5vw);
+    color: rgba(185, 21, 21, 0.9);
+    text-shadow: 1px 1px 3px rgba(125, 21, 21, 0.8);
+    display: none;
+}
+
+p > span {
+    color: var(--foreground2);
+}
+
+p > span:last-child {
+    color: var(--foreground1);
+    font-size: calc(5px + 1.5vw);
+}
+
+#next {
+    width: calc(30px + 9vw);
+    height: calc(12px + 2vh);
+    align-self: flex-end;
+    font-size: calc(8px + 0.5vw + 0.5vh);
+    font-weight: 600;
+    background-color: var(--foreground2);
+    border-radius: 4%/10%;
+    box-shadow: 0px 2px 2px var(--foreground1);
+    color: var(--background1);
+}
+
+#large-menu {
+    display: none;
+    font-size: 3vw;
+    text-decoration: none;
+    color: var(--foreground1);
+    text-shadow: 1px 1px 3px var(--shadow1);
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: calc(10px + 1vw + 1vh);
+    font-size: calc(4px + 0.5vw + 0.5vh);
+    color: var(--foreground2)90;
+    text-shadow: 0px 0px 1px var(--shadow1);
+}
+
+#mode {
+    font-size: calc(3px + 0.5vw + 0.5vh);
+    margin: 1vh;
+}
+
+#mode:hover {
+    color: var(--foreground2);
+}
+
+/* Display tracker if screen is >505px */
+@media only screen and (min-width: 505px) {
+    #circles {
+        display: flex;
+    }
+    input {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .fa-bars:before, .fa-bolt:before {
+        content: none;
+    }
+    #large-menu {
+        display: inline-block;
+    }
+    #large-menu:hover {
+        color: var(--foreground2);
+    }
+    menu {
+        display: none;
+    }
+    input {
+        width: 50%;
+        height: 9%;
+    }
+}
+
+@media only screen and (min-width: 1081px) {
+    .init {
+        font-size: 44px;
+    }
+    nav {
+        font-size: 77px;
+        padding: 12px 54px;
+        justify-content: space-around;
+    }
+    #step {
+        font-size: 43px;
+    }
+    #circles {
+        font-size: 54px;
+    }
+    form, #info {
+        width: 640px;
+        justify-self: center;
+        margin: auto;
+        padding: 17px 34px;
+    }
+    #form {
+        padding-bottom: -20px;
+    }
+    #menu {
+        width: 178px;
+        font-size: 33px;
+    }
+    input {
+        width: 45%;
+        height: 8%;
+    }
+    #next {
+        padding: 5px 0px;
+        width: 119px;
+        height: 50px;
+        font-size: 22px;
+    }
+    #large-menu {
+        font-size: 33px;
+    }
+}
+
+@media only screen and (min-width: 1401px) {
+    form, #info {
+        margin: 0;
+        flex-grow: 1;
+    }
+    form {
+        border-radius: 1vh 0 0 1vh;
+    }
+    #info {
+        border-left: none;
+        border-top: 2px solid var(--foreground2);
+        border-radius: 0 1vh 1vh 0;
+    }
+    #center {
+        flex-direction: row;
+        padding: 0 5vw;
+    }
+    input {
+        width: 40%;
+        height: 30px;
+    }
+}

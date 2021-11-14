@@ -1,0 +1,1 @@
+This is a demo of a healthcare support platform that improves outcomes and reduces costs.
