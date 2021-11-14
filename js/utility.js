@@ -27,30 +27,25 @@ var circlesDefault = `
 <i id="circle3" class="far fa-circle"></i>
 `;
 
-var step1 = `<label for="origin_state">Current State:</label>
+var step1 = `<label for="origin_state">State:</label>
 <span id="origin_state_error">Please enter a 2-letter state code.</span>
 <input type="text" id="origin_state" name="origin_state" placeholder="Ex: CA" required>
 
 
-<label for="origin_bill">Electric + Gas Bills:</label>
-<span id="origin_bill_error">Please enter a dollar value ($ and . symbols are okay).</span>
-<input type="text" id="origin_bill" name="origin_bill" placeholder="Ex: 321.45" required>
+<label for="origin_bill">Insurance Provider:</label>
+<span id="origin_bill_error">Please enter something.</span>
+<input type="text" id="origin_bill" name="origin_bill" placeholder="Ex: LifeSavers Insurance Co" required>
 
-<label for="origin_sqft">Square Footage:</label>
-<input type="text" id="origin_sqft" name="origin_sqft" placeholder="(Optional)">
-
-<br>
-<button type="button" value="Next" onclick="nextStep()" id="next">Next</button>`;
-
-var step2 = `<label for="destination_state">Destination State:</label>
-<span id="destination_state_error">Please enter a 2-letter state code.</span>
-<input type="text" id="destination_state" name="destination_state" placeholder="Ex: NY" required>
-
-<label for="destination_sqft">New Square Footage:</label>
-<input type="text" id="destination_sqft" name="destination_sqft" placeholder="(Optional)">
+<label for="origin_sqft">Phone Number:</label>
+<input type="text" id="origin_sqft" name="origin_sqft" placeholder="Ex: 5025551234">
 
 <br>
 <button type="button" value="Next" onclick="nextStep()" id="next">Next</button>`;
+
+var step2 = `<p>We'll call you as soon as we have an insurance agent on the phone!<br>
+<span>Your estimated wait time is: 5 minutes.</span></p>
+<br>
+<button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
 
 // Stored styles
 const errorShadow = "inset -1px 2px 5px rgba(235, 11, 11, 0.9)";
@@ -80,14 +75,18 @@ let sqft_show = false;
 formText.innerHTML = step1;
 
 function nextStep() {
-    var valid = validateForm();
+    // var valid = validateForm();
+    var valid = true;
     if(!valid){
         return;
     }
     if(step == 1){
         step = 2;
-        stepInfo.innerHTML = "Step 2: Destination Info";
-        formText.innerHTML = step2;
+        stepInfo.innerHTML = "Preparing Support";
+        formText.innerHTML = `<p>We'll call you as soon as we have an insurance agent on the phone!<br>
+        <span>Your estimated wait time is: ${Math.floor(Math.random() * 5) + 1} minutes.</span></p>
+        <br>
+        <button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
         formText = document.getElementById("formText");
         circle1.classList.remove(uncheckedCircle);
         circle1.classList.add(checkedCircle);
@@ -97,12 +96,12 @@ function nextStep() {
     }
     if(step == 2){
         step = 3;
-        stepInfo.innerHTML = "Your Estimate";
-        formText.innerHTML = `<p>Your estimated utility bill in <span>${destination_state}</span> is <span>$${estimated_bill}</span>.<br>
-        <span>${sq_ft_text}</span></p>
+        stepInfo.innerHTML = "Feedback";
+        formText.innerHTML = `<p>Please rate your experience or provide feedback here:<br>
+        <span><a href="">This is a link</a></span></p>
         <br>
         <button type="button" value="Next" onclick="nextStep()" id="next">Restart</button>`;
-        formText = document.getElementById("formText")
+        formText = document.getElementById("formText");
         circle2.classList.remove(uncheckedCircle);
         circle2.classList.add(checkedCircle);
         circle3.classList.remove(incompleteStepCircle);
@@ -112,7 +111,7 @@ function nextStep() {
     if(step == 3) {
         step = 1;
         formText.innerHTML = step1;
-        formText = document.getElementById("formText")
+        formText = document.getElementById("formText");
         stepInfo.innerHTML = "Step 1: Origin Details";
         circleHTML.innerHTML = circlesDefault;
         return;
@@ -141,42 +140,7 @@ function validateForm(){
                 document.getElementById("origin_state_error").style.display = "block";
                 valid = false;
             }
-        // Test for dollar value
-        if(dollar.test(origin_bill)) {
-            origin_bill = dollarFilter.exec(origin_bill)[0];
-        }
-        else {
-            document.getElementById("origin_bill").style.boxShadow = errorShadow;
-            document.getElementById("origin_bill_error").style.display = "block";
-            valid = false;
-        }
     }
-
-    if(step == 2){
-
-        destination_state = document.getElementById("destination_state").value.toUpperCase();
-        destination_sqft = document.getElementById("destination_sqft").value;
-        console.log("You found an easter egg!");
-        
-        if(destination_state in billData) {
-            destination_bill_ref = billData[destination_state];
-            // Calculate bill
-            estimated_bill = Math.round(origin_bill * destination_bill_ref / origin_bill_ref);
-            // If sqft was entered both times, use it as a multiplier
-            if(origin_sqft.length > 2 && destination_sqft.length > 2 && sqft.test(origin_sqft) && sqft.test(destination_sqft)) {
-                estimated_bill = Math.round(estimated_bill * sqft.exec(destination_sqft)[0] / sqft.exec(origin_sqft)[0]);
-                sq_ft_text = 'Your square footage was taken into account!';
-            }
-            else {
-                sq_ft_text = 'Square footage was entered incorrectly or left blank!';
-            }
-        }
-        else {
-                document.getElementById("destination_state").style.boxShadow = errorShadow;
-                document.getElementById("destination_state_error").style.display = "block";
-                valid = false;
-            }
-        }
 
     return valid;
 }
